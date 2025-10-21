@@ -1,0 +1,30 @@
+{
+  "kontornavn": "Ågotnes Legekontor",
+"forsidebilde": "bilder/venterom.jpg",
+  "aapningstider": {
+    "legekontor": "Mandag–fredag: 08:00–15:30",
+    "telefon": "Mandag–fredag: 08:30–11:00 og 13:00–14:00",
+    "laboratorium": "08:15–11:00 og 13:00–14:00"
+  },
+  "ventetid": "Ågotnes Legekontor er en del av akuttberedskapen i Øygarden kommune. Dette kan i perioder medføre ekstra ventetid. Har du ikke tid å vente? Gi beskjed.",
+  "leger": [
+    "Lege Thomas Bøe, spesialist i allmennmedisin (vikar: Elmer Edward torsdager)",
+    "Lege Stig Guntveit, spesialist i allmennmedisin (vikar: Elmer Edward onsdager og fredager)",
+    "Lege Zein Ahmad",
+    "Lege Ane Zakariassen Rong",
+    "Lege Johannes Saxe"
+  ],
+  "labinfo": "SKAL DU KUN TA PRØVER? Gi beskjed i luken for å registrere deg. Laboratoriet har eget køsystem. NB! Fredager må sendeprøver tas før 11:00 (sendes til Haukeland eller Haraldsplass).",
+  "priser": [
+    "Førerkortattest (alle klasser): 750 kr",
+    "Bekreftelser og korte legeerklæringer (f.eks. skolefravær): 200 kr",
+    "For øvrige attester – se liste på kontoret"
+  ],
+  "helsenorge": [
+    "Ny time? Bestill enkelt på helsenorge.no",
+    "Utgått resept? Be om fornyet resept på helsenorge.no",
+    "Start e-konsultasjon på helsenorge.no"
+  ]
+
+}
+

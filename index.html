@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ågotnes Legekontor</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+  line-height: 1.6;
+  color: #222;
+}
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+h1 {
+  font-size: 2em;
+  margin-bottom: 0.2em;
+}
+h2 {
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 4px;
+  color: #005fa3;
+}
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+li::before {
+  content: "• ";
+  color: #005fa3;
+}
+footer {
+  text-align: center;
+  font-size: 0.9em;
+  color: gray;
+  margin-top: 3rem;
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1 id="kontornavn"></h1>
+  <p><em>Informasjon til pasienter og besøkende</em></p>
+</header>
+
+<section>
+  <h2>Åpningstider</h2>
+  <p id="aapningstider"></p>
+</section>
+
+<section>
+  <h2>Ventetid</h2>
+  <p id="ventetid"></p>
+</section>
+
+<section>
+  <h2>Leger</h2>
+  <ul id="leger"></ul>
+</section>
+
+<section>
+  <h2>Laboratoriet</h2>
+  <p id="labinfo"></p>
+</section>
+
+<section>
+  <h2>Priser og attester</h2>
+  <ul id="priser"></ul>
+</section>
+
+<section>
+  <h2>Helsenorge-tjenester</h2>
+  <ul id="helsenorge"></ul>
+</section>
+
+<section style="margin-top:3rem; padding:1.5rem; background:#f9fafb; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.08);">
+  <h2 style="text-align:center; color:#005fa3;">Finn oss</h2>
+  <p style="text-align:center; margin-bottom:1rem;">
+    Ågotnes Legekontor ligger i Ågotnes Helsebygg, Skjergardsvegen 1376 – Øygarden kommune.<br>
+    Parkering finnes rett utenfor bygget.
+  </p>
+
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1970.5655196183056!2d4.998993777259965!3d60.402853724632386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x463ce136f2ab961f%3A0x74ba0045a0ed2563!2s%C3%85gotnes%20Legekontor!5e0!3m2!1sno!2sno!4v1761066486378!5m2!1sno!2sno" 
+    width="100%" 
+    height="350" 
+    style="border:0; border-radius:10px;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+
+  <p style="text-align:center; margin-top:0.5rem;">
+    <a href="https://www.google.com/maps?daddr=Skjergardsvegen+1376,+5363+Ågotnes" target="_blank" rel="noopener">
+      Åpne veibeskrivelse i Google Maps
+    </a>
+  </p>
+</section>
+
+<!-- Blå overgang før footer -->
+<hr style="border:none; border-top:3px solid #005fa3; width:60px; margin:2rem auto;">
+
+
+<footer>
+  © <span id="year"></span> Ågotnes Legekontor – Øygarden kommune
+</footer>
+
+<script>
+fetch('innhold.json')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('kontornavn').textContent = data.kontornavn;
+    document.getElementById('aapningstider').innerHTML =
+      `<strong>Legekontor:</strong> ${data.aapningstider.legekontor}<br>
+       <strong>Telefon:</strong> ${data.aapningstider.telefon}<br>
+       <strong>Laboratorium:</strong> ${data.aapningstider.laboratorium}`;
+    document.getElementById('ventetid').textContent = data.ventetid;
+    document.getElementById('leger').innerHTML = data.leger.map(l => `<li>${l}</li>`).join('');
+    document.getElementById('labinfo').textContent = data.labinfo;
+    document.getElementById('priser').innerHTML = data.priser.map(p => `<li>${p}</li>`).join('');
+    document.getElementById('helsenorge').innerHTML = data.helsenorge.map(h => `<li>${h}</li>`).join('');
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 🖼️ Legg til forsidebilde dersom det finnes i innhold.json
+    if (data.forsidebilde) {
+      const img = document.createElement("img");
+      img.src = data.forsidebilde;
+      img.alt = "Bilde fra legekontoret";
+      img.style = "width:100%; border-radius:10px; margin:10px 0;";
+      // Setter bildet øverst på siden, før første seksjon
+      document.body.insertBefore(img, document.querySelector("section"));
+    }
+  })
+  .catch(() => {
+    document.body.innerHTML = "<p>Kunne ikke laste innholdet. Sjekk at innhold.json ligger i samme mappe som index.html.</p>";
+  });
+</script>
+</body>
+</html>
