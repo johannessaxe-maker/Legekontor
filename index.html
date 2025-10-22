@@ -84,6 +84,26 @@ footer {
   </div>
 </header>
 
+<!-- Forsidebilde-container -->
+<div id="forsidebilde-container" style="text-align:center; margin:0; padding:0;"></div>
+
+<!-- Midlertidige meldinger (vises kun ved aktive perioder) -->
+<div id="midlertidig-info" style="
+  display:none;
+  opacity:0;
+  background:#f1f9fb;
+  border:1px solid #cbe3e8;
+  color:#084a5d;
+  text-align:center;
+  padding:1.2rem;
+  margin:2rem auto;
+  border-radius:8px;
+  max-width:850px;
+  font-family:'Segoe UI', Helvetica, Arial, sans-serif;
+  box-shadow:0 1px 3px rgba(0,0,0,0.05);
+  transition:opacity 0.5s ease;
+"></div>
+
 
 <section>
   <h2>Åpningstider</h2>
@@ -158,25 +178,47 @@ fetch('innhold.json')
        <strong>Laboratorium:</strong> ${data.aapningstider.laboratorium}`;
     document.getElementById('ventetid').textContent = data.ventetid;
     document.getElementById('leger').innerHTML = data.leger.map(l => `<li>${l}</li>`).join('');
+       // Sett inn faste deler av innholdet fra JSON
     document.getElementById('labinfo').textContent = data.labinfo;
     document.getElementById('priser').innerHTML = data.priser.map(p => `<li>${p}</li>`).join('');
     document.getElementById('helsenorge').innerHTML = data.helsenorge.map(h => `<li>${h}</li>`).join('');
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // 🖼️ Legg til forsidebilde dersom det finnes i innhold.json
+    // ---- Legg til forsidebilde hvis definert i JSON ----
     if (data.forsidebilde) {
+      const container = document.getElementById("forsidebilde-container");
       const img = document.createElement("img");
       img.src = data.forsidebilde;
       img.alt = "Bilde fra legekontoret";
-      img.style = "width:100%; border-radius:10px; margin:10px 0;";
-      // Setter bildet øverst på siden, før første seksjon
-      document.body.insertBefore(img, document.querySelector("section"));
+      img.style = "width:100%; max-height:450px; object-fit:cover; border-radius:0;";
+      container.appendChild(img);
     }
-  })
-  .catch(() => {
+
+    // ---- Viser midlertidige meldinger (fra data.midlertidige_meldinger) ----
+    if (data.midlertidige_meldinger && Array.isArray(data.midlertidige_meldinger)) {
+      const idag = new Date();
+      const aktiveMeldinger = data.midlertidige_meldinger.filter(m => {
+        const start = new Date(m.start);
+        const slutt = new Date(m.slutt);
+        return idag >= start && idag <= slutt;
+      });
+
+      if (aktiveMeldinger.length > 0) {
+        const felt = document.getElementById('midlertidig-info');
+        felt.innerHTML = aktiveMeldinger.map(m => `<p style="margin:0.4rem 0;">${m.tekst}</p>`).join('');
+        felt.style.display = "block";
+        requestAnimationFrame(() => {
+          felt.style.opacity = "1";
+        });
+      }
+    }
+  })  // slutt på .then(data => { ... })
+  .catch((err) => {
+    console.error("Feil ved lasting av JSON:", err);
     document.body.innerHTML = "<p>Kunne ikke laste innholdet. Sjekk at innhold.json ligger i samme mappe som index.html.</p>";
   });
 </script>
 </body>
 </html>
+
 
