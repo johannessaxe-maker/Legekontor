@@ -13,6 +13,14 @@ body {
   line-height: 1.6;
   color: #222;
 }
+  #forsidebilde-container img {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  display: block;
+}
 header {
   text-align: center;
   margin-bottom: 2rem;
@@ -190,7 +198,7 @@ fetch('innhold.json')
       const img = document.createElement("img");
       img.src = data.forsidebilde;
       img.alt = "Bilde fra legekontoret";
-      img.style = "width:100%; max-height:450px; object-fit:cover; border-radius:0;";
+img.removeAttribute("style"); // lar CSS gjøre jobben
       container.appendChild(img);
     }
 
@@ -220,5 +228,6 @@ fetch('innhold.json')
 </script>
 </body>
 </html>
+
 
 
