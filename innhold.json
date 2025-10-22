@@ -1,6 +1,6 @@
 {
   "kontornavn": "Ågotnes Legekontor",
-  "forsidebilde": "bilder/venterom.jpg",
+  "forsidebilde": "Bilder/venterom.jpg",
 
   "aapningstider": {
     "legekontor": "Mandag–fredag: 08:00–15:30",
@@ -55,4 +55,5 @@
     }
   ]
 }
+
 
