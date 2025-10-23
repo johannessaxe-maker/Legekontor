@@ -20,7 +20,6 @@
 
   "labinfo": "SKAL DU KUN TA PRØVER? Gi beskjed i luken for å registrere deg. Laboratoriet har eget køsystem. NB! Fredager må sendeprøver tas før 11:00 (sendes til Haukeland eller Haraldsplass).",
 
-  {
   "priser": [
     "Førerkortattest (alle klasser): 850 kr",
     "Bekreftelser og korte legeerklæringer (f.eks. skolefravær): 200 kr",
@@ -56,6 +55,7 @@
     }
   ]
 }
+
 
 
 
