@@ -106,7 +106,7 @@
       "svar": "Det er gratis parkering utenfor legekontoret."
     },
     {
-      "nøkkelord": ["telefon", "nummer", "timebekreftelse", "påminnelse", "sms"],
+      "nøkkelord": ["telefon", "nummer", "timebekreftelse", "påminnelse", "sms", "beskjed", "melding"],
       "svar": "For å motta timebekreftelser og påminnelser om time, må telefonnummeret ditt være registrert i journalen. Du kan registrere det i resepsjonen eller mens du er inne hos legen."
     },
     {
@@ -125,6 +125,7 @@
     { "hvis": ["reise", "vaksine"], "styrk": "reisevaksine" }
   ]
 }
+
 
 
 
