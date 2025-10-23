@@ -373,22 +373,30 @@ if (input && chatlog) {
       }
 
       // --- Finn beste treff ---
-      for (let mal of chatbotMaler) {
-        if (mal._score > høyesteScore) {
-          høyesteScore = mal._score;
-          besteTreff = mal;
-          console.log("Beste treff:", besteTreff?.nøkkelord, "score:", høyesteScore);
-        }
-      }
+// --- Finn beste treff ---
+for (let mal of chatbotMaler) {
+  if (mal._score > høyesteScore) {
+    høyesteScore = mal._score;
+    besteTreff = mal;
+  }
+}
 
-      // --- Gi svar eller fallback ---
-      if (besteTreff && høyesteScore >= 2) {
-        chatlog.innerHTML += `<div class="bot">${besteTreff.svar}</div>`;
-      } else {
-        chatlog.innerHTML += `<div class="bot">Beklager, det spørsmålet forstår jeg ikke helt. Prøv gjerne igjen.</div>`;
-      }
+console.log("Endelig beste treff:", besteTreff?.nøkkelord, "score:", høyesteScore);
 
-      chatlog.scrollTop = chatlog.scrollHeight;
+// --- 🔍 Sikkerhetsfiltrering mot tilfeldige treff ---
+// Denne sjekken sørger for at spørsmålet faktisk inneholder
+// minst ett ekte nøkkelord fra JSON, ikke bare fuzzy-likhet.
+const harTreff = chatbotMaler.some(m =>
+  m.nøkkelord.some(o => spm.toLowerCase().includes(o.toLowerCase()))
+);
+// --- Gi svar eller fallback ---
+if (besteTreff && høyesteScore >= 3 && harTreff) {
+  chatlog.innerHTML += `<div class="bot">${besteTreff.svar}</div>`;
+} else {
+  chatlog.innerHTML += `<div class="bot">Beklager, det spørsmålet forstår jeg ikke helt. Prøv gjerne igjen.</div>`;
+}
+
+chatlog.scrollTop = chatlog.scrollHeight;
     }
   });
 }
@@ -396,6 +404,7 @@ if (input && chatlog) {
 </script>
 </body>
 </html>
+
 
 
 
