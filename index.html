@@ -51,6 +51,41 @@ footer {
   border-top: 1px solid #ddd;
   padding-top: 1rem;
 }
+  #chatbot-container {
+  max-width: 350px;
+  margin: 1.5rem auto;
+  padding: 1rem;
+  background: #f8f9fa;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  font-family: sans-serif;
+}
+
+#chatbot-container h3 {
+  margin-top: 0;
+  color: #004b87;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+#chatlog {
+  max-height: 180px;
+  overflow-y: auto;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+#chatlog .bruker { text-align: right; color: #0056b3; margin: 4px 0; }
+#chatlog .bot { text-align: left; color: #333; margin: 4px 0; }
+
+#brukerInput {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
 </style>
 </head>
 <body>
@@ -113,11 +148,18 @@ footer {
   transition:opacity 0.5s ease;
 "></div>
 
+  
 <section>
   <h2>Kontakt oss</h2>
   <p id="Kontakt_oss"></p>
 </section>
 
+<div id="chatbot-container">
+  <h3>Spørsmål og svar 💬</h3>
+  <div id="chatlog"></div>
+  <input id="brukerInput" type="text" placeholder="Skriv et spørsmål..." />
+</div>
+  
 <section>
   <h2>Åpningstider</h2>
   <p id="aapningstider"></p>
@@ -234,9 +276,64 @@ img.removeAttribute("style"); // lar CSS gjøre jobben
     console.error("Feil ved lasting av JSON:", err);
     document.body.innerHTML = "<p>Kunne ikke laste innholdet. Sjekk at innhold.json ligger i samme mappe som index.html.</p>";
   });
+  // --- Chatbot-funksjon ---
+let chatbotMaler = [];
+
+// Synonymer for bedre treff
+const synonymer = {
+  "time": ["konsultasjon", "avtale", "avtal", "book", "timebestilling", "legebesøk"],
+  "bestill": ["avtal", "book", "reserver", "skaff", "ordne"],
+  "lege": ["legekontor", "doktor", "legen"],
+  "åpningstid": ["åpent", "tid", "når", "åpning", "stengt"],
+  "resept": ["forny", "medisin", "legemiddel", "tablett", "kur"],
+  "kontakt": ["ringe", "telefon", "nummer", "adresse"]
+};
+
+function matcher(ord, tekst) {
+  const alle = [ord, ...(synonymer[ord] || [])];
+  return alle.some(o => tekst.includes(o));
+}
+
+fetch("innhold.json")
+  .then(r => r.json())
+  .then(data => {
+    chatbotMaler = data.chatbot_maler || [];
+  });
+
+const input = document.getElementById("brukerInput");
+const chatlog = document.getElementById("chatlog");
+
+if (input && chatlog) {
+  input.addEventListener("keypress", e => {
+    if (e.key === "Enter" && input.value.trim() !== "") {
+      const spm = input.value.trim().toLowerCase();
+      chatlog.innerHTML += `<div class="bruker">${spm}</div>`;
+      input.value = "";
+
+      let funnet = false;
+      for (let mal of chatbotMaler) {
+        for (let ord of mal.nøkkelord) {
+          if (matcher(ord, spm)) {
+            chatlog.innerHTML += `<div class="bot">${mal.svar}</div>`;
+            funnet = true;
+            break;
+          }
+        }
+        if (funnet) break;
+      }
+
+      if (!funnet) {
+        chatlog.innerHTML += `<div class="bot">Beklager, det spørsmålet forstår jeg ikke helt. Prøv gjerne igjen.</div>`;
+      }
+      chatlog.scrollTop = chatlog.scrollHeight;
+    }
+  });
+}
+
 </script>
 </body>
 </html>
+
 
 
 
