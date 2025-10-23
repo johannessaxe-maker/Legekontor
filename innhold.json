@@ -26,11 +26,12 @@
     "For øvrige attester – se liste på kontoret"
   ],
 
-  "helsenorge": [
-    "Ny time? Bestill enkelt på <a href='https://www.helsenorge.no' target='_blank' rel='noopener'>Helsenorge.no</a>",
-    "Utgått resept? Be om fornyet resept på <a href='https://www.helsenorge.no' target='_blank' rel='noopener'>Helsenorge.no</a>",
-    "Start e-konsultasjon på <a href='https://www.helsenorge.no' target='_blank' rel='noopener'>Helsenorge.no</a>"
-  ],
+"helsenorge": [
+  "Ny time? Bestill enkelt på <a href=\"https://www.helsenorge.no\" target=\"_blank\" rel=\"noopener\">Helsenorge.no</a>",
+  "Utgått resept? Be om fornyet resept på <a href=\"https://www.helsenorge.no\" target=\"_blank\" rel=\"noopener\">Helsenorge.no</a>",
+  "Start e-konsultasjon på <a href=\"https://www.helsenorge.no\" target=\"_blank\" rel=\"noopener\">Helsenorge.no</a>"
+],
+
 
   "midlertidige_meldinger": [
     {
@@ -55,6 +56,7 @@
     }
   ]
 }
+
 
 
 
