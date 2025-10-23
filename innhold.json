@@ -10,7 +10,7 @@
   "aapningstider": {
     "legekontor": "Mandag–fredag: 08:00–15:30",
     "telefon": "Mandag–fredag: 08:30–11:00 og 13:00–14:00. Resepsjon tlf: 56 31 39 90",
-    "laboratorium": "08:15–11:00 og 13:00–14:00"
+    "laboratorium": " Mandag-torsdag: 08:15–11:00 og 13:00–14:00. Fredag: 08:15-11:00"
   },
 
   "ventetid": "Ågotnes Legekontor er en del av akuttberedskapen i Øygarden kommune. Dette kan i perioder medføre ekstra ventetid. Har du ikke tid å vente? Gi beskjed.",
@@ -61,6 +61,7 @@
     }
   ]
 }
+
 
 
 
