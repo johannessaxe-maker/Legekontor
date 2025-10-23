@@ -94,7 +94,7 @@
     "svar": "Ved symptomer på urinveisinfeksjon (UVI) må du ringe legekontoret for vurdering og eventuell akutt-time. Det er ikke mulig å møte direkte med urinprøve uten avtale."
   },
   {
-    "nøkkelord": ["prøvesvar", "svar", "blodprøve", "undersøkelse", "resultat"],
+    "nøkkelord": ["prøvesvar", "svar", "blodprøve", "undersøkelse", "resultat", "når", "blodprøvene", "ikke"],
     "svar": "Dersom du venter på svar på prøver eller undersøkelser, anbefales det å sende en e-kontakt via Helsenorge i stedet for å ringe legekontoret."
   },
   {
@@ -119,6 +119,7 @@
 }
 ]
 }
+
 
 
 
