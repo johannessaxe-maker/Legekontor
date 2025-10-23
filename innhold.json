@@ -119,12 +119,15 @@
     }
   ],
 
-  "kontekstregler": [
-    { "hvis": ["blodprøve", "time"], "styrk": "blodprøve", "svekk": "time" },
-    { "hvis": ["barn", "blodprøve"], "styrk": "barn" },
-    { "hvis": ["reise", "vaksine"], "styrk": "reisevaksine" }
-  ]
+ "kontekstregler": [
+  { "hvis": ["blodprøve", "time"], "styrk": "blodprøve", "svekk": "time" },
+  { "hvis": ["barn", "blodprøve"], "styrk": "barn" },
+  { "hvis": ["reise", "vaksine"], "styrk": "reisevaksine" },
+  { "hvis": ["svar", "blodprøve"], "styrk": "prøvesvar", "svekk": "blodprøve" },
+  { "hvis": ["influensa", "vaksine"], "styrk": "vaksine", "svekk": "reisevaksine" }
+]
 }
+
 
 
 
