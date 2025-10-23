@@ -369,12 +369,14 @@ if (besteTreff && høyesteScore >= 2) {
 }
 chatlog.scrollTop = chatlog.scrollHeight;
 
-  });
-}
+   }  // ← lukker if (e.key === "Enter" ...)
+  });  // ← lukker addEventListener
+}    
 
 </script>
 </body>
 </html>
+
 
 
 
