@@ -390,7 +390,7 @@ const harTreff = chatbotMaler.some(m =>
   m.nøkkelord.some(o => spm.toLowerCase().includes(o.toLowerCase()))
 );
 // --- Gi svar eller fallback ---
-if (besteTreff && høyesteScore >= 3 && harTreff) {
+if (besteTreff && høyesteScore >= 4 && harTreff) {
   chatlog.innerHTML += `<div class="bot">${besteTreff.svar}</div>`;
 } else {
   chatlog.innerHTML += `<div class="bot">Beklager, det spørsmålet forstår jeg ikke helt. Prøv gjerne igjen.</div>`;
@@ -404,6 +404,7 @@ chatlog.scrollTop = chatlog.scrollHeight;
 </script>
 </body>
 </html>
+
 
 
 
