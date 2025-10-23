@@ -280,7 +280,7 @@ img.removeAttribute("style"); // lar CSS gjøre jobben
     console.error("Feil ved lasting av JSON:", err);
     document.body.innerHTML = "<p>Kunne ikke laste innholdet. Sjekk at innhold.json ligger i samme mappe som index.html.</p>";
   });
-  // --- Chatbot-funksjon ---
+// --- Chatbot-funksjon ---
 let chatbotMaler = [];
 
 // Synonymer for bedre treff
@@ -293,11 +293,32 @@ const synonymer = {
   "kontakt": ["ringe", "telefon", "nummer", "adresse"]
 };
 
-function matcher(ord, tekst) {
-  const alle = [ord, ...(synonymer[ord] || [])];
-  return alle.some(o => tekst.includes(o));
+// Fuzzy matching med Levenshtein-avstand
+function levenshtein(a, b) {
+  const m = [];
+  for (let i = 0; i <= b.length; i++) m[i] = [i];
+  for (let j = 0; j <= a.length; j++) m[0][j] = j;
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      m[i][j] = b[i - 1] === a[j - 1]
+        ? m[i - 1][j - 1]
+        : Math.min(m[i - 1][j - 1] + 1, m[i][j - 1] + 1, m[i - 1][j] + 1);
+    }
+  }
+  return m[b.length][a.length];
 }
 
+// Kombinert matcher: eksakt + fuzzy + synonymer
+function matcher(ord, tekst) {
+  const alle = [ord, ...(synonymer[ord] || [])];
+  return alle.some(o => {
+    if (tekst.includes(o)) return true;
+    const ordtekst = tekst.split(/\s+/);
+    return ordtekst.some(t => levenshtein(t, o) <= 2);
+  });
+}
+
+// Last inn malene
 fetch("innhold.json")
   .then(r => r.json())
   .then(data => {
@@ -314,32 +335,29 @@ if (input && chatlog) {
       chatlog.innerHTML += `<div class="bruker">${spm}</div>`;
       input.value = "";
 
+      // --- Beste-treff-logikk ---
       let besteTreff = null;
-let høyesteScore = 0;
+      let høyesteScore = 0;
 
-for (let mal of chatbotMaler) {
-  let score = 0;
-  for (let ord of mal.nøkkelord) {
-    if (matcher(ord, spm)) score++;
-  }
-  if (score > høyesteScore) {
-    høyesteScore = score;
-    besteTreff = mal;
-  }
-}
+      for (let mal of chatbotMaler) {
+        let score = 0;
+        for (let ord of mal.nøkkelord) {
+          if (matcher(ord, spm)) score++;
+        }
+        if (score > høyesteScore) {
+          høyesteScore = score;
+          besteTreff = mal;
+        }
+      }
 
-if (besteTreff) {
-  chatlog.innerHTML += `<div class="bot">${besteTreff.svar}</div>`;
-} else {
-  chatlog.innerHTML += `<div class="bot">Beklager, det spørsmålet forstår jeg ikke helt. Prøv gjerne igjen.</div>`;
-}
-chatlog.scrollTop = chatlog.scrollHeight;
-
-
-      if (!funnet) {
+      if (besteTreff) {
+        chatlog.innerHTML += `<div class="bot">${besteTreff.svar}</div>`;
+      } else {
         chatlog.innerHTML += `<div class="bot">Beklager, det spørsmålet forstår jeg ikke helt. Prøv gjerne igjen.</div>`;
       }
       chatlog.scrollTop = chatlog.scrollHeight;
+    }
+  });
     }
   });
 }
@@ -347,6 +365,7 @@ chatlog.scrollTop = chatlog.scrollHeight;
 </script>
 </body>
 </html>
+
 
 
 
