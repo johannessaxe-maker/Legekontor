@@ -6,8 +6,6 @@
   "Resepsjon": "56 31 39 90",
   "Adresse": "Ågotnes Helsebygg, Skjergardsvegen 1376"
 },
-
-  },
   
   "aapningstider": {
     "legekontor": "Mandag–fredag: 08:00–15:30",
@@ -63,6 +61,7 @@
     }
   ]
 }
+
 
 
 
