@@ -20,6 +20,7 @@
 
   "labinfo": "SKAL DU KUN TA PRØVER? Gi beskjed i luken for å registrere deg. Laboratoriet har eget køsystem. NB! Fredager må sendeprøver tas før 11:00 (sendes til Haukeland eller Haraldsplass).",
 
+  {
   "priser": [
     "Førerkortattest (alle klasser): 850 kr",
     "Bekreftelser og korte legeerklæringer (f.eks. skolefravær): 200 kr",
@@ -27,34 +28,35 @@
   ],
 
   "helsenorge": [
-  "Ny time? Bestill enkelt på <a href='https://www.helsenorge.no' target='_blank' rel='noopener'>Helsenorge.no</a>",
-  "Utgått resept? Be om fornyet resept på <a href='https://www.helsenorge.no' target='_blank' rel='noopener'>Helsenorge.no</a>",
-  "Start e-konsultasjon på <a href='https://www.helsenorge.no' target='_blank' rel='noopener'>Helsenorge.no</a>"
+    "Ny time? Bestill enkelt på <a href='https://www.helsenorge.no' target='_blank' rel='noopener'>Helsenorge.no</a>",
+    "Utgått resept? Be om fornyet resept på <a href='https://www.helsenorge.no' target='_blank' rel='noopener'>Helsenorge.no</a>",
+    "Start e-konsultasjon på <a href='https://www.helsenorge.no' target='_blank' rel='noopener'>Helsenorge.no</a>"
   ],
 
   "midlertidige_meldinger": [
     {
-      "tekst": "Time til covid- og influensavaksine kan fås ved å ringe legekonteret eller sende e-kontakt.",
+      "tekst": "Time til covid- og influensavaksine kan fås ved å ringe legekontoret eller sende e-kontakt.",
       "start": "2025-10-14",
       "slutt": "2025-11-25"
     },
     {
       "tekst": "Kontoret holder stengt 2. januar pga. intern opplæring.",
-      "start": "2024-10-08",
-      "slutt": "2024-10-26"
+      "start": "2026-01-02",
+      "slutt": "2026-01-03"
     },
     {
       "tekst": "Sommerferie: Kontoret er redusert bemannet 8.–26. juli.",
-      "start": "2024-10-08",
-      "slutt": "2024-10-26"
+      "start": "2026-07-08",
+      "slutt": "2026-07-26"
     },
     {
       "tekst": "Ny lege begynner ved kontoret 1. september.",
-      "start": "2024-10-08",
-      "slutt": "2024-10-26"
+      "start": "2026-09-01",
+      "slutt": "2026-09-15"
     }
   ]
 }
+
 
 
 
