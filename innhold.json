@@ -3,8 +3,10 @@
   "forsidebilde": "Bilder/venterom.jpg",
 
   "Kontakt_oss": {
-    "Resepsjon": "56 31 39 90",
-    "Adresse": " Ågotnes Helsebygg, Skjergardsvegen 1376"
+  "Resepsjon": "56 31 39 90",
+  "Adresse": "Ågotnes Helsebygg, Skjergardsvegen 1376"
+},
+
   },
   
   "aapningstider": {
@@ -61,6 +63,7 @@
     }
   ]
 }
+
 
 
 
