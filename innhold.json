@@ -78,7 +78,7 @@
     "svar": "Du trenger ikke time til blodprøver som er rekvirert av lege, eller hvis du har med prøveskjema fra sykehus eller ekstern behandler. Møt opp i resepsjonen for registrering kl. 08:15–11:00 og 13:00–14:00 mandag–torsdag, og 08:15–11:00 på fredager."
   },
   {
-    "nøkkelord": ["barn", "2 år", "barneprøve"],
+    "nøkkelord": ["barn", "2 år", "barneprøve","blodprøve"],
     "svar": "Blodprøver tas normalt ikke av barn under 2 år. Disse tas ved poliklinikk for blodprøvetaking i Bergen."
   },
   {
@@ -119,6 +119,7 @@
 }
 ]
 }
+
 
 
 
