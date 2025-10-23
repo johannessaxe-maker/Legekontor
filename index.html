@@ -346,16 +346,17 @@ if (input && chatlog) {
         for (let ord of mal.nøkkelord) {
           const alle = [ord, ...(synonymer[ord] || [])];
           for (let o of alle) {
-            if (spm.includes(o)) score += 3;
-            else {
-              const ordtekst = spm.split(/\s+/);
-              for (let t of ordtekst) {
-                const dist = levenshtein(t, o);
-                if (dist === 1) score += 1.5;
-                else if (dist === 2) score += 1;
-              }
-            }
-          }
+  if (spm.includes(o)) score += 3; // eksakt match i brukerens spørsmål
+  else if (mal.svar.toLowerCase().includes(o)) score += 0.5; // svak match i svaret
+  else {
+    const ordtekst = spm.split(/\s+/);
+    for (let t of ordtekst) {
+      const dist = levenshtein(t, o);
+      if (dist === 1) score += 1.5; // nesten riktig (fuzzy)
+      else if (dist === 2) score += 1; // små skrivefeil
+    }
+  }
+}
         }
         mal._score = score;
       }
@@ -376,6 +377,7 @@ if (input && chatlog) {
         if (mal._score > høyesteScore) {
           høyesteScore = mal._score;
           besteTreff = mal;
+          console.log("Beste treff:", besteTreff?.nøkkelord, "score:", høyesteScore);
         }
       }
 
@@ -394,6 +396,7 @@ if (input && chatlog) {
 </script>
 </body>
 </html>
+
 
 
 
