@@ -106,11 +106,14 @@
     "nøkkelord": ["journal", "kopi", "innsyn", "utskrift"],
     "svar": "Du kan be om kopi av journal ved å sende e-kontakt via Helsenorge eller spørre i resepsjonen. Det kan ta noen dager før journalen er klar."
   },
-  {
-    "id": "faktura",
-    "nøkkelord": ["faktura", "betaling", "regning", "convene"],
-    "svar": "Spørsmål om faktura håndteres av <a href='https://www.convene.no' target='_blank' rel='noopener'>Convene.no</a>. Du kan logge inn der for å se utestående betalinger. Dersom du mener en regning er feil, ta kontakt med legekontoret."
-  },
+ {
+  "id": "faktura",
+  "nøkkelord": [
+    "faktura", "betaling", "betale", "regning", "ubetalt", "convene",
+    "purring", "betalinger", "fakturaer", "feil på faktura"
+  ],
+  "svar": "Spørsmål om faktura håndteres av <a href='https://www.convene.no' target='_blank' rel='noopener'>Convene.no</a>. Du kan logge inn der for å se utestående betalinger. Dersom du mener en regning er feil, ta kontakt med legekontoret."
+},
   {
     "id": "ikke_mott",
     "nøkkelord": ["ikke møtt", "ikke kommet", "avbestille", "avlyse", "ute", "glemt", "avbestilling"],
@@ -146,26 +149,35 @@
     "nøkkelord": ["e-konsultasjon", "e konsultasjon", "melding", "helse norge", "spørsmål", "digital"],
     "svar": "Du kan sende e-konsultasjon til fastlegen din via <a href='https://www.helsenorge.no' target='_blank' rel='noopener'>Helsenorge.no</a> for korte medisinske spørsmål. Merk at tjenesten kan være stengt i helger, høytid og legenes ferier."
   },
-  {
-    "id": "attest",
-    "nøkkelord": ["attest", "førerkort", "legeattest", "førerkortattest"],
-    "svar": "For førerkortattest må du bestille ordinær time. Andre attester avtales etter behov – spør i resepsjonen eller via e-kontakt. Attester dekkes ikke av Helfo/frikort og må betales av pasienten."
-  },
-  {
-    "id": "parkering",
-    "nøkkelord": ["parkering", "bil", "parkere"],
-    "svar": "Det er gratis parkering utenfor legekontoret."
-  },
+{
+  "id": "attest",
+  "nøkkelord": [
+    "attest", "legeattest", "førerkortattest", "førerkort", "sertifikat",
+    "helseattest", "legeerklæring", "attester"
+  ],
+  "svar": "For førerkortattest må du bestille ordinær time. Andre attester avtales etter behov – spør i resepsjonen eller via e-kontakt. Attester dekkes ikke av Helfo/frikort og må betales av pasienten."
+},
+    {
+  "id": "parkering",
+  "nøkkelord": [
+    "parkering", "parkere", "bil", "parkeringsplass", "gratis parkering",
+    "parkering utenfor", "bilparkering", "parkeringsmulighet", "plass til bil"
+  ],
+  "svar": "Det er gratis parkering utenfor legekontoret."
+},
   {
     "id": "telefonnummer_sms",
     "nøkkelord": ["telefonnummer", "sms", "påminnelse", "bekreftelse", "melding"],
     "svar": "For å motta påminnelse og bekreftelse på time, må telefonnummeret ditt være registrert i journalen. Dette kan du ordne i resepsjonen eller hos legen."
   },
-  {
-    "id": "ny_pasient",
-    "nøkkelord": ["ny pasient", "overføring", "journal", "ny lege"],
-    "svar": "Hvis du er ny pasient, bør du be tidligere legekontor om å sende journalen din til oss. Det gjør at vi raskere får oversikt over historikken din."
-  },
+{
+  "id": "ny_pasient",
+  "nøkkelord": [
+    "ny pasient", "ny", "første gang", "registrere", "overføring",
+    "overfør", "ny lege", "bytte legekontor", "velge lege"
+  ],
+  "svar": "Hvis du er ny pasient, bør du be tidligere legekontor om å sende journalen din til oss. Det gjør at vi raskere får oversikt over historikken din."
+},
   {
     "id": "tolk",
     "nøkkelord": ["tolk", "språk", "oversetter"],
@@ -248,6 +260,7 @@
   }
 ]
 }
+
 
 
 
