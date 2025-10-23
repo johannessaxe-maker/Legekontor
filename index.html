@@ -196,6 +196,12 @@ fetch('innhold.json')
     document.getElementById('priser').innerHTML = data.priser.map(p => `<li>${p}</li>`).join('');
     document.getElementById('helsenorge').innerHTML = data.helsenorge.map(h => `<li>${h}</li>`).join('');
     document.getElementById('year').textContent = new Date().getFullYear();
+   document.getElementById('Kontakt_oss').innerHTML =
+  `<strong>Resepsjon:</strong> ${data.Kontakt_oss.Resepsjon}<br>
+   <strong>Adresse:</strong> ${data.Kontakt_oss.Adresse}`;
+
+}
+
 
     // ---- Legg til forsidebilde hvis definert i JSON ----
     if (data.forsidebilde) {
@@ -233,6 +239,7 @@ img.removeAttribute("style"); // lar CSS gjøre jobben
 </script>
 </body>
 </html>
+
 
 
 
