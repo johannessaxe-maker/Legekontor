@@ -2,7 +2,7 @@
   "kontornavn": "Ågotnes Legekontor",
   "forsidebilde": "Bilder/venterom.jpg",
 
-  "Kontakt oss": {
+  "Kontakt_oss": {
     "Resepsjon": "56 31 39 90",
     "Adresse": " Ågotnes Helsebygg, Skjergardsvegen 1376"
   },
@@ -61,6 +61,7 @@
     }
   ]
 }
+
 
 
 
