@@ -335,34 +335,47 @@ if (input && chatlog) {
       chatlog.innerHTML += `<div class="bruker">${spm}</div>`;
       input.value = "";
 
-      // --- Beste-treff-logikk ---
-      let besteTreff = null;
-      let høyesteScore = 0;
+      // --- Beste-treff-logikk med vekting og terskel ---
+let besteTreff = null;
+let høyesteScore = 0;
 
-      for (let mal of chatbotMaler) {
-        let score = 0;
-        for (let ord of mal.nøkkelord) {
-          if (matcher(ord, spm)) score++;
-        }
-        if (score > høyesteScore) {
-          høyesteScore = score;
-          besteTreff = mal;
+for (let mal of chatbotMaler) {
+  let score = 0;
+  for (let ord of mal.nøkkelord) {
+    const alle = [ord, ...(synonymer[ord] || [])];
+    for (let o of alle) {
+      if (spm.includes(o)) score += 3;               // eksakt treff = høy verdi
+      else {
+        const ordtekst = spm.split(/\s+/);
+        for (let t of ordtekst) {
+          const dist = levenshtein(t, o);
+          if (dist === 1) score += 1.5;              // nesten riktig
+          else if (dist === 2) score += 1;           // to feil: lav verdi
         }
       }
-
-      if (besteTreff) {
-        chatlog.innerHTML += `<div class="bot">${besteTreff.svar}</div>`;
-      } else {
-        chatlog.innerHTML += `<div class="bot">Beklager, det spørsmålet forstår jeg ikke helt. Prøv gjerne igjen.</div>`;
-      }
-      chatlog.scrollTop = chatlog.scrollHeight;
     }
+  }
+  if (score > høyesteScore) {
+    høyesteScore = score;
+    besteTreff = mal;
+  }
+}
+
+// terskel: krever minst 2 poeng for å regnes som treff
+if (besteTreff && høyesteScore >= 2) {
+  chatlog.innerHTML += `<div class="bot">${besteTreff.svar}</div>`;
+} else {
+  chatlog.innerHTML += `<div class="bot">Beklager, det spørsmålet forstår jeg ikke helt. Prøv gjerne igjen.</div>`;
+}
+chatlog.scrollTop = chatlog.scrollHeight;
+
   });
 }
 
 </script>
 </body>
 </html>
+
 
 
 
