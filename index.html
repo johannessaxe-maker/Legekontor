@@ -280,8 +280,9 @@ img.removeAttribute("style"); // lar CSS gjøre jobben
     console.error("Feil ved lasting av JSON:", err);
     document.body.innerHTML = "<p>Kunne ikke laste innholdet. Sjekk at innhold.json ligger i samme mappe som index.html.</p>";
   });
-// --- Chatbot-funksjon ---
+// --- Chatbot-funksjon med fuzzy matching og kontekstregler ---
 let chatbotMaler = [];
+let kontekstregler = [];
 
 // Synonymer for bedre treff
 const synonymer = {
@@ -318,11 +319,12 @@ function matcher(ord, tekst) {
   });
 }
 
-// Last inn malene
+// Last inn maler og eventuelle kontekstregler
 fetch("innhold.json")
   .then(r => r.json())
   .then(data => {
     chatbotMaler = data.chatbot_maler || [];
+    kontekstregler = data.kontekstregler || [];
   });
 
 const input = document.getElementById("brukerInput");
@@ -335,47 +337,64 @@ if (input && chatlog) {
       chatlog.innerHTML += `<div class="bruker">${spm}</div>`;
       input.value = "";
 
-      // --- Beste-treff-logikk med vekting og terskel ---
-let besteTreff = null;
-let høyesteScore = 0;
+      let besteTreff = null;
+      let høyesteScore = 0;
 
-for (let mal of chatbotMaler) {
-  let score = 0;
-  for (let ord of mal.nøkkelord) {
-    const alle = [ord, ...(synonymer[ord] || [])];
-    for (let o of alle) {
-      if (spm.includes(o)) score += 3;               // eksakt treff = høy verdi
-      else {
-        const ordtekst = spm.split(/\s+/);
-        for (let t of ordtekst) {
-          const dist = levenshtein(t, o);
-          if (dist === 1) score += 1.5;              // nesten riktig
-          else if (dist === 2) score += 1;           // to feil: lav verdi
+      // --- Beregn grunnscore ---
+      for (let mal of chatbotMaler) {
+        let score = 0;
+        for (let ord of mal.nøkkelord) {
+          const alle = [ord, ...(synonymer[ord] || [])];
+          for (let o of alle) {
+            if (spm.includes(o)) score += 3;
+            else {
+              const ordtekst = spm.split(/\s+/);
+              for (let t of ordtekst) {
+                const dist = levenshtein(t, o);
+                if (dist === 1) score += 1.5;
+                else if (dist === 2) score += 1;
+              }
+            }
+          }
+        }
+        mal._score = score;
+      }
+
+      // --- Påfør kontekstregler fra JSON ---
+      for (let regel of kontekstregler) {
+        const oppfyllt = regel.hvis.every(w => spm.includes(w));
+        if (oppfyllt) {
+          for (let mal of chatbotMaler) {
+            if (regel.styrk && mal.nøkkelord.includes(regel.styrk)) mal._score += 2;
+            if (regel.svekk && mal.nøkkelord.includes(regel.svekk)) mal._score -= 1;
+          }
         }
       }
+
+      // --- Finn beste treff ---
+      for (let mal of chatbotMaler) {
+        if (mal._score > høyesteScore) {
+          høyesteScore = mal._score;
+          besteTreff = mal;
+        }
+      }
+
+      // --- Gi svar eller fallback ---
+      if (besteTreff && høyesteScore >= 2) {
+        chatlog.innerHTML += `<div class="bot">${besteTreff.svar}</div>`;
+      } else {
+        chatlog.innerHTML += `<div class="bot">Beklager, det spørsmålet forstår jeg ikke helt. Prøv gjerne igjen.</div>`;
+      }
+
+      chatlog.scrollTop = chatlog.scrollHeight;
     }
-  }
-  if (score > høyesteScore) {
-    høyesteScore = score;
-    besteTreff = mal;
-  }
+  });
 }
-
-// terskel: krever minst 2 poeng for å regnes som treff
-if (besteTreff && høyesteScore >= 2) {
-  chatlog.innerHTML += `<div class="bot">${besteTreff.svar}</div>`;
-} else {
-  chatlog.innerHTML += `<div class="bot">Beklager, det spørsmålet forstår jeg ikke helt. Prøv gjerne igjen.</div>`;
-}
-chatlog.scrollTop = chatlog.scrollHeight;
-
-   }  // ← lukker if (e.key === "Enter" ...)
-  });  // ← lukker addEventListener
-}    
 
 </script>
 </body>
 </html>
+
 
 
 
