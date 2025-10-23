@@ -59,7 +59,7 @@
       "start": "2026-09-01",
       "slutt": "2026-09-15"
     }
-  ]
+  ],
   "chatbot_maler": [
   {
     "nøkkelord": ["time", "bestill", "lege"],
@@ -75,6 +75,7 @@
   }
 ]
 }
+
 
 
 
