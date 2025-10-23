@@ -314,17 +314,27 @@ if (input && chatlog) {
       chatlog.innerHTML += `<div class="bruker">${spm}</div>`;
       input.value = "";
 
-      let funnet = false;
-      for (let mal of chatbotMaler) {
-        for (let ord of mal.nøkkelord) {
-          if (matcher(ord, spm)) {
-            chatlog.innerHTML += `<div class="bot">${mal.svar}</div>`;
-            funnet = true;
-            break;
-          }
-        }
-        if (funnet) break;
-      }
+      let besteTreff = null;
+let høyesteScore = 0;
+
+for (let mal of chatbotMaler) {
+  let score = 0;
+  for (let ord of mal.nøkkelord) {
+    if (matcher(ord, spm)) score++;
+  }
+  if (score > høyesteScore) {
+    høyesteScore = score;
+    besteTreff = mal;
+  }
+}
+
+if (besteTreff) {
+  chatlog.innerHTML += `<div class="bot">${besteTreff.svar}</div>`;
+} else {
+  chatlog.innerHTML += `<div class="bot">Beklager, det spørsmålet forstår jeg ikke helt. Prøv gjerne igjen.</div>`;
+}
+chatlog.scrollTop = chatlog.scrollHeight;
+
 
       if (!funnet) {
         chatlog.innerHTML += `<div class="bot">Beklager, det spørsmålet forstår jeg ikke helt. Prøv gjerne igjen.</div>`;
@@ -337,6 +347,7 @@ if (input && chatlog) {
 </script>
 </body>
 </html>
+
 
 
 
