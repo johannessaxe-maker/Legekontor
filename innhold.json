@@ -117,8 +117,15 @@
   "nøkkelord": ["tolk", "språk", "oversetter"],
   "svar": "Dersom du trenger tolk til timen, må du ringe legekontoret eller sende en e-kontakt i forkant slik at dette kan bestilles."
 }
+    "kontekstregler": [
+  { "hvis": ["blodprøve", "time"], "styrk": "blodprøve", "svekk": "time" },
+  { "hvis": ["barn", "blodprøve"], "styrk": "barn" },
+  { "hvis": ["reise", "vaksine"], "styrk": "reisevaksine" }
+]
+
 ]
 }
+
 
 
 
