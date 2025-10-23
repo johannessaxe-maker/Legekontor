@@ -60,7 +60,22 @@
       "slutt": "2026-09-15"
     }
   ]
+  "chatbot_maler": [
+  {
+    "nøkkelord": ["time", "bestill", "lege"],
+    "svar": "Du kan bestille time via Helsenorge eller ringe resepsjonen på 56 31 39 90."
+  },
+  {
+    "nøkkelord": ["åpningstid", "åpent"],
+    "svar": "Legekontoret er åpent mandag–fredag kl. 08:00–15:30."
+  },
+  {
+    "nøkkelord": ["resept", "forny", "medisin"],
+    "svar": "Du kan fornye resept via Helsenorge eller kontakte resepsjonen."
+  }
+]
 }
+
 
 
 
