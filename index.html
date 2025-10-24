@@ -400,10 +400,16 @@ chatlog.scrollTop = chatlog.scrollHeight;
     }
   });
 }
+// Enkel anonym besøksteller (CountAPI)
+// Ingen persondata lagres – kun antall besøk registreres.
+fetch("https://api.countapi.xyz/hit/agotneslegekontor/no")
+  .then(res => res.json())
+  .then(res => console.log("Antall besøk (total teller):", res.value));
 
 </script>
 </body>
 </html>
+
 
 
 
