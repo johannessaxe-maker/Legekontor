@@ -1,7 +1,10 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 import json, os
 
 app = Flask(__name__)
+CORS(app)  # 👈 tillater forespørsel fra annet domene (f.eks. aagotneslegekontor.no)
+
 counter_file = "counter.json"
 
 def load_count():
@@ -26,3 +29,4 @@ def count():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+
