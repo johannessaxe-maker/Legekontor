@@ -402,9 +402,18 @@ function visAlternativSvar() {
     alert("Ingen alternativt svar funnet.");
   }
 }
+  // ---- Besøksteller ----
+fetch("https://legekontor.onrender.com/count")
+  .then(res => res.json())
+  .then(data => {
+    console.log("Besøksteller:", data.visits);
+  })
+  .catch(err => console.warn("Kunne ikke oppdatere teller:", err));
+
 </script>
 </body>
 </html>
+
 
 
 
