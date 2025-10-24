@@ -185,7 +185,7 @@
   },
   {
     "id": "prøvesvar",
-    "nøkkelord": ["prøvesvar", "resultat", "blodprøve", "undersøkelse", "når", "ikke"],
+    "nøkkelord": ["prøvesvar", "resultat", "blodprøve", "undersøkelse", "når", "ikke", "blodprøvene", "svar"],
     "svar": "Dersom du venter på svar på blodprøver eller andre undersøkelser, anbefales det å sende en e-kontakt via Helsenorge i stedet for å ringe legekontoret."
   }
 ],
@@ -260,6 +260,7 @@
   }
 ]
 }
+
 
 
 
