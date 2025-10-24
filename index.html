@@ -337,98 +337,71 @@ if (input && chatlog) {
       chatlog.innerHTML += `<div class="bruker">${spm}</div>`;
       input.value = "";
 
-      let besteTreff = null;
       let høyesteScore = 0;
+      let besteTreff = null;
 
-      // --- Beregn grunnscore ---
       for (let mal of chatbotMaler) {
         let score = 0;
         for (let ord of mal.nøkkelord) {
           const alle = [ord, ...(synonymer[ord] || [])];
           for (let o of alle) {
-  if (spm.includes(o)) score += 3; // eksakt match i brukerens spørsmål
-  else if (mal.svar.toLowerCase().includes(o)) score += 0.5; // svak match i svaret
-  else {
-    const ordtekst = spm.split(/\s+/);
-    for (let t of ordtekst) {
-      const dist = levenshtein(t, o);
-      if (dist === 1) score += 1.5; // nesten riktig (fuzzy)
-      else if (dist === 2) score += 1; // små skrivefeil
-    }
-  }
-}
+            if (spm.includes(o)) score += 3;
+            else if (mal.svar.toLowerCase().includes(o)) score += 0.5;
+            else {
+              const ordtekst = spm.split(/\s+/);
+              for (let t of ordtekst) {
+                const dist = levenshtein(t, o);
+                if (dist === 1) score += 1.5;
+                else if (dist === 2) score += 1;
+              }
+            }
+          }
         }
         mal._score = score;
       }
 
-      // --- Påfør kontekstregler fra JSON ---
-      for (let regel of kontekstregler) {
-        const oppfyllt = regel.hvis.every(w => spm.includes(w));
-        if (oppfyllt) {
-          for (let mal of chatbotMaler) {
-            if (regel.styrk && mal.nøkkelord.includes(regel.styrk)) mal._score += 2;
-            if (regel.svekk && mal.nøkkelord.includes(regel.svekk)) mal._score -= 1;
-          }
-        }
+      const harTreff = chatbotMaler.some(m =>
+        m.nøkkelord.some(o => spm.toLowerCase().includes(o.toLowerCase()))
+      );
+
+      const sorterte = chatbotMaler
+        .filter(m => m._score && m._score > 0)
+        .sort((a, b) => b._score - a._score);
+
+      const best = sorterte[0] || null;
+      const nestBeste = sorterte[1] || null;
+
+      if (best && best._score >= 3 && harTreff) {
+        chatlog.innerHTML += `
+          <div class="bot">
+            ${best.svar}
+            ${nestBeste && nestBeste._score >= 2 ? `
+              <button onclick="visAlternativSvar()" style="
+                margin-top:6px; background:#e7f0fa; border:1px solid #bcd3ec;
+                color:#004b87; border-radius:6px; padding:3px 6px; cursor:pointer;
+                font-size:0.8rem;">Vis alternativt svar</button>` : ""}
+          </div>`;
+        window.nestBeste = nestBeste;
+      } else {
+        chatlog.innerHTML += `<div class="bot">Beklager, det spørsmålet forstår jeg ikke helt. Prøv gjerne igjen.</div>`;
       }
 
-      // --- Finn beste treff ---
-// --- Finn beste treff ---
-for (let mal of chatbotMaler) {
-  if (mal._score > høyesteScore) {
-    høyesteScore = mal._score;
-    besteTreff = mal;
-  }
+      chatlog.scrollTop = chatlog.scrollHeight;
+    }
+  });
 }
 
-console.log("Endelig beste treff:", besteTreff?.nøkkelord, "score:", høyesteScore);
-
-// --- 🔍 Sikkerhetsfiltrering mot tilfeldige treff ---
-// Denne sjekken sørger for at spørsmålet faktisk inneholder
-// minst ett ekte nøkkelord fra JSON, ikke bare fuzzy-likhet.
-const harTreff = chatbotMaler.some(m =>
-  m.nøkkelord.some(o => spm.toLowerCase().includes(o.toLowerCase()))
-);
-// --- Finn og sorter treff etter score ---
-const sorterte = chatbotMaler
-  .filter(m => m._score && m._score > 0)
-  .sort((a,b) => b._score - a._score);
-
-const best = sorterte[0] || null;
-const nestBeste = sorterte[1] || null;
-
-// --- Gi svar eller fallback ---
-if (best && best._score >= 3 && harTreff) {
-  chatlog.innerHTML += `
-    <div class="bot">
-      ${best.svar}
-      ${nestBeste && nestBeste._score >= 2 ? `
-        <button onclick="visAlternativSvar()" style="
-          margin-top:6px; background:#e7f0fa; border:1px solid #bcd3ec;
-          color:#004b87; border-radius:6px; padding:3px 6px; cursor:pointer;
-          font-size:0.8rem;">Vis alternativt svar</button>` : ""}
-    </div>`;
-  window.nestBeste = nestBeste;
-} else {
-  chatlog.innerHTML += `<div class="bot">Beklager, det spørsmålet forstår jeg ikke helt. Prøv gjerne igjen.</div>`;
-}
-
-chatlog.scrollTop = chatlog.scrollHeight;
-
-// --- Funksjon for å vise alternativt svar ---
 function visAlternativSvar() {
   if (window.nestBeste) {
-    chatlog.innerHTML += `<div class="bot" style="opacity:0.85; font-style:italic;">
-      (Alternativt svar:) ${window.nestBeste.svar}
-    </div>`;
+    chatlog.innerHTML += `
+      <div class="bot" style="opacity:0.85; font-style:italic;">
+        (Alternativt svar:) ${window.nestBeste.svar}
+      </div>`;
     chatlog.scrollTop = chatlog.scrollHeight;
   } else {
     alert("Ingen alternativt svar funnet.");
   }
 }
-  });  // avslutter addEventListener
-}      // avslutter if (input && chatlog)
-
 </script>
 </body>
 </html>
