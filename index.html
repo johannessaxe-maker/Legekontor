@@ -400,7 +400,7 @@ chatlog.scrollTop = chatlog.scrollHeight;
     }
   });
 }
-fetch("https://<ditt-render-navn>.onrender.com/count")
+fetch("https://legekontor.onrender.com/count")
   .then(res => res.json())
   .then(res => console.log("Antall besøk (Render teller):", res.visits))
   .catch(err => console.error("Feil ved teller:", err));
@@ -408,6 +408,7 @@ fetch("https://<ditt-render-navn>.onrender.com/count")
 </script>
 </body>
 </html>
+
 
 
 
