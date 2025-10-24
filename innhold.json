@@ -78,7 +78,7 @@
   },
   {
     "id": "blodprøve_rekvisisjon",
-    "nøkkelord": ["blodprøve", "rekvirert", "skjema", "prøve", "trenger","må", "uten"],
+    "nøkkelord": ["blodprøve", "rekvirert", "skjema", "prøve", "trenger","må", "uten", "time"],
     "svar": "Du trenger ikke time til blodprøver som er rekvirert av lege, eller hvis du har med prøveskjema fra sykehus eller annen behandler. Møt opp i resepsjonen for registrering kl. 08:15–11:00 og 13:00–14:00 mandag–torsdag, og 08:15–11:00 på fredager."
   },
   {
@@ -185,7 +185,7 @@
   },
   {
     "id": "prøvesvar",
-    "nøkkelord": ["prøvesvar", "resultat", "blodprøve", "undersøkelse", "når", "ikke", "blodprøvene", "svar"],
+    "nøkkelord": ["prøvesvar", "resultat", "blodprøve", "undersøkelse", "når", "ikke", "blodprøvene", "svar", "prøvene"],
     "svar": "Dersom du venter på svar på blodprøver eller andre undersøkelser, anbefales det å sende en e-kontakt via Helsenorge i stedet for å ringe legekontoret."
   }
 ],
@@ -260,6 +260,7 @@
   }
 ]
 }
+
 
 
 
