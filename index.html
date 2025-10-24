@@ -400,15 +400,17 @@ chatlog.scrollTop = chatlog.scrollHeight;
     }
   });
 }
-// Enkel anonym besøksteller (CountAPI)
-// Ingen persondata lagres – kun antall besøk registreres.
-fetch("https://api.countapi.xyz/hit/agotneslegekontor/no")
+// Enkel anonym besøksteller via VisitCount (Vercel)
+// Ingen persondata lagres – kun antall sidevisninger.
+fetch("https://visitcount.vercel.app/api/counter?name=agotneslegekontor")
   .then(res => res.json())
-  .then(res => console.log("Antall besøk (total teller):", res.value));
+  .then(data => console.log("Antall besøk (total teller):", data.value))
+  .catch(err => console.warn("Klarte ikke hente teller:", err));
 
 </script>
 </body>
 </html>
+
 
 
 
