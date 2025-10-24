@@ -257,9 +257,15 @@
   {
     "hvis": ["telefon", "påminnelse", "sms"],
     "styrk": "telefonnummer_sms"
-  }
+  },
+   {
+  "hvis": ["e", "konsultasjon"],
+  "styrk": "e_konsultasjon",
+  "svekk": "timebestilling"
+}
 ]
 }
+
 
 
 
