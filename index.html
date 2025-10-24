@@ -394,14 +394,14 @@ const sorterte = chatbotMaler
   .filter(m => m._score && m._score > 0)
   .sort((a,b) => b._score - a._score);
 
-const besteTreff = sorterte[0] || null;
+const best = sorterte[0] || null;
 const nestBeste = sorterte[1] || null;
 
 // --- Gi svar eller fallback ---
-if (besteTreff && besteTreff._score >= 3 && harTreff) {
+if (best && best._score >= 3 && harTreff) {
   chatlog.innerHTML += `
     <div class="bot">
-      ${besteTreff.svar}
+      ${best.svar}
       ${nestBeste && nestBeste._score >= 2 ? `
         <button onclick="visAlternativSvar()" style="
           margin-top:6px; background:#e7f0fa; border:1px solid #bcd3ec;
@@ -427,9 +427,11 @@ function visAlternativSvar() {
   }
 }
   }); // avslutter keypress-listener
+}     // <-- denne manglet
 </script>
 </body>
 </html>
+
 
 
 
