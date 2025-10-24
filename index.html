@@ -389,20 +389,49 @@ console.log("Endelig beste treff:", besteTreff?.nøkkelord, "score:", høyesteSc
 const harTreff = chatbotMaler.some(m =>
   m.nøkkelord.some(o => spm.toLowerCase().includes(o.toLowerCase()))
 );
+// --- Finn og sorter treff etter score ---
+const sorterte = chatbotMaler
+  .filter(m => m._score && m._score > 0)
+  .sort((a,b) => b._score - a._score);
+
+const besteTreff = sorterte[0] || null;
+const nestBeste = sorterte[1] || null;
+
 // --- Gi svar eller fallback ---
-if (besteTreff && høyesteScore >= 4 && harTreff) {
-  chatlog.innerHTML += `<div class="bot">${besteTreff.svar}</div>`;
+if (besteTreff && besteTreff._score >= 3 && harTreff) {
+  chatlog.innerHTML += `
+    <div class="bot">
+      ${besteTreff.svar}
+      ${nestBeste && nestBeste._score >= 2 ? `
+        <button onclick="visAlternativSvar()" style="
+          margin-top:6px; background:#e7f0fa; border:1px solid #bcd3ec;
+          color:#004b87; border-radius:6px; padding:3px 6px; cursor:pointer;
+          font-size:0.8rem;">Vis alternativt svar</button>` : ""}
+    </div>`;
+  window.nestBeste = nestBeste;
 } else {
   chatlog.innerHTML += `<div class="bot">Beklager, det spørsmålet forstår jeg ikke helt. Prøv gjerne igjen.</div>`;
 }
 
 chatlog.scrollTop = chatlog.scrollHeight;
+
+// --- Funksjon for å vise alternativt svar ---
+function visAlternativSvar() {
+  if (window.nestBeste) {
+    chatlog.innerHTML += `<div class="bot" style="opacity:0.85; font-style:italic;">
+      (Alternativt svar:) ${window.nestBeste.svar}
+    </div>`;
+    chatlog.scrollTop = chatlog.scrollHeight;
+  } else {
+    alert("Ingen alternativt svar funnet.");
+  }
     }
   });
 }
 </script>
 </body>
 </html>
+
 
 
 
