@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ågotnes Legekontor</title>
@@ -228,13 +227,6 @@ footer {
 </footer>
 
 <script>
-  const SUPABASE_URL = "https://rmwoihyzsrsokeflijzk.supabase.co";
-const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_6vgfDwOPkSWlyMLUMfvNUA_O2U726Jz";
-
-const supabase = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
 fetch('innhold.json')
   .then(res => res.json())
   .then(data => {
@@ -421,8 +413,6 @@ fetch("https://legekontor.onrender.com/count")
 </script>
 </body>
 </html>
-
-
 
 
 
