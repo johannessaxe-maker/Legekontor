@@ -39,9 +39,9 @@
 
   "midlertidige_meldinger": [
     {
-      "tekst": "Time til covid- og influensavaksine kan fås ved å ringe legekontoret eller sende e-kontakt.",
-      "start": "2025-10-14",
-      "slutt": "2025-11-25"
+      "tekst": "NB! KONTORETS TELEFONLINJER ER I USTAND. TA KONTAKT VIA HELSENORGE.",
+      "start": "2026-02-16",
+      "slutt": "2026-02-19"
     },
     {
       "tekst": "Kontoret holder stengt 2. januar pga. intern opplæring.",
@@ -265,6 +265,7 @@
 }
 ]
 }
+
 
 
 
