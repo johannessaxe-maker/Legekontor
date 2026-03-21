@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: johannessaxe-maker/Legekontor
+  name: git-gateway
   branch: main
 
 media_folder: "Bilder"
