@@ -1,47 +1,10 @@
 {
-  "kontornavn": "Ågotnes Legekontor",
   "forsidebilde": "Bilder/venterom.jpg",
-
-  "Kontakt_oss": {
-    "Resepsjon": "56 31 39 90",
-    "Adresse": "Ågotnes Helsebygg, Skjergardsvegen 1376"
-  },
-  
-  "aapningstider": {
-    "legekontor": "Mandag–fredag: 08:00–15:30",
-    "telefon": "Mandag–fredag: 08:30–11:00 og 13:00–14:00. Resepsjon tlf: 56 31 39 90",
-    "laboratorium": "Mandag–torsdag: 08:15–11:00 og 13:00–14:00. Fredag: 08:15–11:00"
-  },
-
-  "ventetid": "Ågotnes Legekontor er en del av akuttberedskapen i Øygarden kommune. Dette kan i perioder medføre ekstra ventetid. Har du ikke tid å vente? Gi beskjed.",
-
-  "leger": [
-    "Lege Thomas Bøe, spesialist i allmennmedisin",
-    "Lege Stig Guntveit, spesialist i allmennmedisin (vikar: Elmer Edward onsdager og fredager)",
-    "Lege Zein Ahmad",
-    "Lege Ane Zakariassen Rong",
-    "Lege Johannes Saxe"
-  ],
-
-  "labinfo": "SKAL DU KUN TA PRØVER? Gi beskjed i luken for å registrere deg. Laboratoriet har eget køsystem. NB! Fredager må sendeprøver tas før 11:00 (sendes til Haukeland eller Haraldsplass).",
-
-  "priser": [
-    "Førerkortattest (alle klasser): 850 kr",
-    "Bekreftelser og korte legeerklæringer (f.eks. skolefravær): 200 kr",
-    "For øvrige attester – se liste på kontoret"
-  ],
-
-  "helsenorge": [
-    "Ny time? Bestill enkelt på <a href=\"https://www.helsenorge.no\" target=\"_blank\" rel=\"noopener\">Helsenorge.no</a>",
-    "Utgått resept? Be om fornyet resept på <a href=\"https://www.helsenorge.no\" target=\"_blank\" rel=\"noopener\">Helsenorge.no</a>",
-    "Start e-konsultasjon på <a href=\"https://www.helsenorge.no\" target=\"_blank\" rel=\"noopener\">Helsenorge.no</a>"
-  ],
-
   "midlertidige_meldinger": [
     {
-      "tekst": "NB! KONTORETS TELEFONLINJER ER I USTAND. TA KONTAKT VIA HELSENORGE.",
-      "start": "2026-02-16",
-      "slutt": "2026-02-19"
+      "tekst": "Test av meldingssystem",
+      "start": "2026-03-21",
+      "slutt": "2026-03-26"
     },
     {
       "tekst": "Kontoret holder stengt 2. januar pga. intern opplæring.",
@@ -59,237 +22,428 @@
       "slutt": "2026-09-15"
     }
   ],
-
+  "aapningstider": {
+    "legekontor": "Mandag–fredag: 08:00–15:30",
+    "telefon": "Mandag–fredag: 08:30–11:00 og 13:00–14:00. Resepsjon tlf: 56 31 39 90",
+    "laboratorium": "Mandag–torsdag: 08:15–11:00 og 13:00–14:00. Fredag: 08:15–11:00"
+  },
+  "helsenorge": [
+    "Ny time? Bestill enkelt på <a href=\"https://www.helsenorge.no\" target=\"_blank\" rel=\"noopener\">Helsenorge.no</a>",
+    "Utgått resept? Be om fornyet resept på <a href=\"https://www.helsenorge.no\" target=\"_blank\" rel=\"noopener\">Helsenorge.no</a>",
+    "Start e-konsultasjon på <a href=\"https://www.helsenorge.no\" target=\"_blank\" rel=\"noopener\">Helsenorge.no</a>"
+  ],
+  "Kontakt_oss": {
+    "Resepsjon": "56 31 39 90",
+    "Adresse": "Ågotnes Helsebygg, Skjergardsvegen 1376"
+  },
   "chatbot_maler": [
-  {
-    "id": "timebestilling",
-    "nøkkelord": ["time", "bestill", "lege", "konsultasjon", "avtale"],
-    "svar": "Du kan bestille time via Helsenorge eller ringe resepsjonen på 56 31 39 90."
-  },
-  {
-    "id": "åpningstider",
-    "nøkkelord": ["åpningstid", "åpent", "tid", "stengt", "kontortid"],
-    "svar": "Legekontoret er åpent mandag–fredag kl. 08:00–15:30."
-  },
-  {
-    "id": "resept",
-    "nøkkelord": ["resept", "forny", "medisin", "legemiddel", "tablett", "kur"],
-    "svar": "Du kan fornye resept via Helsenorge eller kontakte resepsjonen."
-  },
-  {
-    "id": "blodprøve_rekvisisjon",
-    "nøkkelord": ["blodprøve", "rekvirert", "skjema", "trenger","må", "uten", "time"],
-    "svar": "Du trenger ikke time til blodprøver som er rekvirert av lege, eller hvis du har med prøveskjema fra sykehus eller annen behandler. Møt opp i resepsjonen for registrering kl. 08:15–11:00 og 13:00–14:00 mandag–torsdag, og 08:15–11:00 på fredager."
-  },
-  {
-    "id": "blodprøve_barn",
-    "nøkkelord": ["barn", "2 år", "barneprøve", "blodprøve", "blodprøver"],
-    "svar": "Vi tar normalt ikke blodprøver på barn under 2 år. Disse må tas ved poliklinikk for blodprøvetaking i Bergen."
-  },
-  {
-    "id": "sting_injeksjon",
-    "nøkkelord": ["sting", "suturer", "b12", "injeksjon", "vaksine"],
-    "svar": "Du trenger ikke time til fjerning av sting, B12-injeksjoner, vaksiner eller andre injeksjoner der du har med medisinen selv. Møt opp i resepsjonen i åpningstiden."
-  },
-  {
-    "id": "telefon",
-    "nøkkelord": ["telefon", "nummer", "ringe", "kontakt", "resepsjon"],
-    "svar": "Du kan nå resepsjonen på 56 31 39 90 mandag–fredag kl. 08:30–11:00 og 13:00–14:00. Utenom disse tidene er telefonen stengt."
-  },
-  {
-    "id": "fastlegebytte",
-    "nøkkelord": ["fastlege", "bytte", "legebytte"],
-    "svar": "Du bytter fastlege via <a href='https://www.helsenorge.no' target='_blank' rel='noopener'>Helsenorge.no</a>. Etter bytte bør du be tidligere legekontor om å sende journalen til din nye fastlege."
-  },
-  {
-    "id": "journal_innsyn",
-    "nøkkelord": ["journal", "kopi", "innsyn", "utskrift"],
-    "svar": "Du kan be om kopi av journal ved å sende e-kontakt via Helsenorge eller spørre i resepsjonen. Det kan ta noen dager før journalen er klar."
-  },
- {
-  "id": "faktura",
-  "nøkkelord": [
-    "faktura", "betaling", "betale", "regning", "ubetalt", "convene",
-    "purring", "betalinger", "fakturaer", "feil på faktura"
-  ],
-  "svar": "Spørsmål om faktura håndteres av <a href='https://www.convene.no' target='_blank' rel='noopener'>Convene.no</a>. Du kan logge inn der for å se utestående betalinger. Dersom du mener en regning er feil, ta kontakt med legekontoret."
-},
-  {
-    "id": "ikke_mott",
-    "nøkkelord": ["ikke møtt", "ikke kommet", "avbestille", "avlyse", "ute", "glemt", "avbestilling"],
-    "svar": "Time må avbestilles senest 24 timer før. Uteblitt time belastes som vanlig konsultasjon."
-  },
-  {
-    "id": "influensavaksine",
-    "nøkkelord": ["influensa", "influensavaksine", "covid", "vaksine", "sesongvaksine"],
-    "svar": "Influensavaksine tilbys hver høst. Når vaksinene ankommer, legger vi ut informasjon på nettsiden. Du kan bestille time via Helsenorge eller ta kontakt med resepsjonen."
-  },
-  {
-    "id": "dobbelttime",
-    "nøkkelord": ["dobbelttime", "to timer", "utvidet", "ekstra tid"],
-    "svar": "Gi beskjed ved bestilling hvis du tror du trenger ekstra tid, slik at vi kan sette opp dobbelttime. Du kan også sette deg opp til to påfølgende timer, men merk at SMS-påminnelsen da kan vise feil starttid."
-  },
-  {
-    "id": "urinprøve",
-    "nøkkelord": ["urin", "urinprøve", "uvi", "blærebetennelse"],
-    "svar": "Ved symptomer på urinveisinfeksjon må du ringe legekontoret for vurdering og eventuell akutt-time. Det er ikke mulig å levere urinprøve uten avtale."
-  },
-  {
-    "id": "reisevaksine",
-    "nøkkelord": ["reise", "vaksine", "reisevaksine", "utland"],
-    "svar": "Legekontoret tilbyr ikke rådgivning om reisevaksiner. Du kan kontakte et reisevaksinasjonskontor, som for eksempel Helsetjenester Vest Reisevaksiner på Sartor for veiledning."
-  },
-  {
-    "id": "akutt",
-    "nøkkelord": ["akutt", "rask time", "øyeblikkelig hjelp", "haster"],
-    "svar": "Ved akutt sykdom eller behov for rask time må du ringe legekontoret. Vi setter av egne akutt-timer hver dag."
-  },
-  {
-    "id": "e_konsultasjon",
-    "nøkkelord": ["e-konsultasjon", "e konsultasjon", "melding", "helse norge", "spørsmål", "digital"],
-    "svar": "Du kan sende e-konsultasjon til fastlegen din via <a href='https://www.helsenorge.no' target='_blank' rel='noopener'>Helsenorge.no</a> for korte medisinske spørsmål. Merk at tjenesten kan være stengt i helger, høytid og legenes ferier."
-  },
-{
-  "id": "attest",
-  "nøkkelord": [
-    "attest", "legeattest", "førerkortattest", "førerkort", "sertifikat",
-    "helseattest", "legeerklæring", "attester"
-  ],
-  "svar": "For førerkortattest må du bestille ordinær time. Andre attester avtales etter behov – spør i resepsjonen eller via e-kontakt. Attester dekkes ikke av Helfo/frikort og må betales av pasienten."
-},
     {
-  "id": "parkering",
-  "nøkkelord": [
-    "parkering", "parkere", "bil", "parkeringsplass", "gratis parkering",
-    "parkering utenfor", "bilparkering", "parkeringsmulighet", "plass til bil"
+      "id": "timebestilling",
+      "nøkkelord": [
+        "time",
+        "bestill",
+        "lege",
+        "konsultasjon",
+        "avtale"
+      ],
+      "svar": "Du kan bestille time via Helsenorge eller ringe resepsjonen på 56 31 39 90."
+    },
+    {
+      "id": "åpningstider",
+      "nøkkelord": [
+        "åpningstid",
+        "åpent",
+        "tid",
+        "stengt",
+        "kontortid"
+      ],
+      "svar": "Legekontoret er åpent mandag–fredag kl. 08:00–15:30."
+    },
+    {
+      "id": "resept",
+      "nøkkelord": [
+        "resept",
+        "forny",
+        "medisin",
+        "legemiddel",
+        "tablett",
+        "kur"
+      ],
+      "svar": "Du kan fornye resept via Helsenorge eller kontakte resepsjonen."
+    },
+    {
+      "id": "blodprøve_rekvisisjon",
+      "nøkkelord": [
+        "blodprøve",
+        "rekvirert",
+        "skjema",
+        "trenger",
+        "må",
+        "uten",
+        "time"
+      ],
+      "svar": "Du trenger ikke time til blodprøver som er rekvirert av lege, eller hvis du har med prøveskjema fra sykehus eller annen behandler. Møt opp i resepsjonen for registrering kl. 08:15–11:00 og 13:00–14:00 mandag–torsdag, og 08:15–11:00 på fredager."
+    },
+    {
+      "id": "blodprøve_barn",
+      "nøkkelord": [
+        "barn",
+        "2 år",
+        "barneprøve",
+        "blodprøve",
+        "blodprøver"
+      ],
+      "svar": "Vi tar normalt ikke blodprøver på barn under 2 år. Disse må tas ved poliklinikk for blodprøvetaking i Bergen."
+    },
+    {
+      "id": "sting_injeksjon",
+      "nøkkelord": [
+        "sting",
+        "suturer",
+        "b12",
+        "injeksjon",
+        "vaksine"
+      ],
+      "svar": "Du trenger ikke time til fjerning av sting, B12-injeksjoner, vaksiner eller andre injeksjoner der du har med medisinen selv. Møt opp i resepsjonen i åpningstiden."
+    },
+    {
+      "id": "telefon",
+      "nøkkelord": [
+        "telefon",
+        "nummer",
+        "ringe",
+        "kontakt",
+        "resepsjon"
+      ],
+      "svar": "Du kan nå resepsjonen på 56 31 39 90 mandag–fredag kl. 08:30–11:00 og 13:00–14:00. Utenom disse tidene er telefonen stengt."
+    },
+    {
+      "id": "fastlegebytte",
+      "nøkkelord": [
+        "fastlege",
+        "bytte",
+        "legebytte"
+      ],
+      "svar": "Du bytter fastlege via <a href='https://www.helsenorge.no' target='_blank' rel='noopener'>Helsenorge.no</a>. Etter bytte bør du be tidligere legekontor om å sende journalen til din nye fastlege."
+    },
+    {
+      "id": "journal_innsyn",
+      "nøkkelord": [
+        "journal",
+        "kopi",
+        "innsyn",
+        "utskrift"
+      ],
+      "svar": "Du kan be om kopi av journal ved å sende e-kontakt via Helsenorge eller spørre i resepsjonen. Det kan ta noen dager før journalen er klar."
+    },
+    {
+      "id": "faktura",
+      "nøkkelord": [
+        "faktura",
+        "betaling",
+        "betale",
+        "regning",
+        "ubetalt",
+        "convene",
+        "purring",
+        "betalinger",
+        "fakturaer",
+        "feil på faktura"
+      ],
+      "svar": "Spørsmål om faktura håndteres av <a href='https://www.convene.no' target='_blank' rel='noopener'>Convene.no</a>. Du kan logge inn der for å se utestående betalinger. Dersom du mener en regning er feil, ta kontakt med legekontoret."
+    },
+    {
+      "id": "ikke_mott",
+      "nøkkelord": [
+        "ikke møtt",
+        "ikke kommet",
+        "avbestille",
+        "avlyse",
+        "ute",
+        "glemt",
+        "avbestilling"
+      ],
+      "svar": "Time må avbestilles senest 24 timer før. Uteblitt time belastes som vanlig konsultasjon."
+    },
+    {
+      "id": "influensavaksine",
+      "nøkkelord": [
+        "influensa",
+        "influensavaksine",
+        "covid",
+        "vaksine",
+        "sesongvaksine"
+      ],
+      "svar": "Influensavaksine tilbys hver høst. Når vaksinene ankommer, legger vi ut informasjon på nettsiden. Du kan bestille time via Helsenorge eller ta kontakt med resepsjonen."
+    },
+    {
+      "id": "dobbelttime",
+      "nøkkelord": [
+        "dobbelttime",
+        "to timer",
+        "utvidet",
+        "ekstra tid"
+      ],
+      "svar": "Gi beskjed ved bestilling hvis du tror du trenger ekstra tid, slik at vi kan sette opp dobbelttime. Du kan også sette deg opp til to påfølgende timer, men merk at SMS-påminnelsen da kan vise feil starttid."
+    },
+    {
+      "id": "urinprøve",
+      "nøkkelord": [
+        "urin",
+        "urinprøve",
+        "uvi",
+        "blærebetennelse"
+      ],
+      "svar": "Ved symptomer på urinveisinfeksjon må du ringe legekontoret for vurdering og eventuell akutt-time. Det er ikke mulig å levere urinprøve uten avtale."
+    },
+    {
+      "id": "reisevaksine",
+      "nøkkelord": [
+        "reise",
+        "vaksine",
+        "reisevaksine",
+        "utland"
+      ],
+      "svar": "Legekontoret tilbyr ikke rådgivning om reisevaksiner. Du kan kontakte et reisevaksinasjonskontor, som for eksempel Helsetjenester Vest Reisevaksiner på Sartor for veiledning."
+    },
+    {
+      "id": "akutt",
+      "nøkkelord": [
+        "akutt",
+        "rask time",
+        "øyeblikkelig hjelp",
+        "haster"
+      ],
+      "svar": "Ved akutt sykdom eller behov for rask time må du ringe legekontoret. Vi setter av egne akutt-timer hver dag."
+    },
+    {
+      "id": "e_konsultasjon",
+      "nøkkelord": [
+        "e-konsultasjon",
+        "e konsultasjon",
+        "melding",
+        "helse norge",
+        "spørsmål",
+        "digital"
+      ],
+      "svar": "Du kan sende e-konsultasjon til fastlegen din via <a href='https://www.helsenorge.no' target='_blank' rel='noopener'>Helsenorge.no</a> for korte medisinske spørsmål. Merk at tjenesten kan være stengt i helger, høytid og legenes ferier."
+    },
+    {
+      "id": "attest",
+      "nøkkelord": [
+        "attest",
+        "legeattest",
+        "førerkortattest",
+        "førerkort",
+        "sertifikat",
+        "helseattest",
+        "legeerklæring",
+        "attester"
+      ],
+      "svar": "For førerkortattest må du bestille ordinær time. Andre attester avtales etter behov – spør i resepsjonen eller via e-kontakt. Attester dekkes ikke av Helfo/frikort og må betales av pasienten."
+    },
+    {
+      "id": "parkering",
+      "nøkkelord": [
+        "parkering",
+        "parkere",
+        "bil",
+        "parkeringsplass",
+        "gratis parkering",
+        "parkering utenfor",
+        "bilparkering",
+        "parkeringsmulighet",
+        "plass til bil"
+      ],
+      "svar": "Det er gratis parkering utenfor legekontoret."
+    },
+    {
+      "id": "telefonnummer_sms",
+      "nøkkelord": [
+        "telefonnummer",
+        "sms",
+        "påminnelse",
+        "bekreftelse",
+        "melding"
+      ],
+      "svar": "For å motta påminnelse og bekreftelse på time, må telefonnummeret ditt være registrert i journalen. Dette kan du ordne i resepsjonen eller hos legen."
+    },
+    {
+      "id": "ny_pasient",
+      "nøkkelord": [
+        "ny pasient",
+        "ny",
+        "første gang",
+        "registrere",
+        "overføring",
+        "overfør",
+        "ny lege",
+        "bytte legekontor",
+        "velge lege"
+      ],
+      "svar": "Hvis du er ny pasient, bør du be tidligere legekontor om å sende journalen din til oss. Det gjør at vi raskere får oversikt over historikken din."
+    },
+    {
+      "id": "tolk",
+      "nøkkelord": [
+        "tolk",
+        "språk",
+        "oversetter"
+      ],
+      "svar": "Dersom du trenger tolk til timen, må du gi beskjed til legekontoret på forhånd via e-kontakt eller telefon, slik at vi kan bestille tolk i tide."
+    },
+    {
+      "id": "prøvesvar",
+      "nøkkelord": [
+        "prøvesvar",
+        "resultat",
+        "blodprøve",
+        "undersøkelse",
+        "når",
+        "ikke",
+        "blodprøvene",
+        "svar",
+        "prøvene"
+      ],
+      "svar": "Dersom du venter på svar på blodprøver eller andre undersøkelser, anbefales det å sende en e-kontakt via Helsenorge i stedet for å ringe legekontoret."
+    }
   ],
-  "svar": "Det er gratis parkering utenfor legekontoret."
-},
-  {
-    "id": "telefonnummer_sms",
-    "nøkkelord": ["telefonnummer", "sms", "påminnelse", "bekreftelse", "melding"],
-    "svar": "For å motta påminnelse og bekreftelse på time, må telefonnummeret ditt være registrert i journalen. Dette kan du ordne i resepsjonen eller hos legen."
-  },
-{
-  "id": "ny_pasient",
-  "nøkkelord": [
-    "ny pasient", "ny", "første gang", "registrere", "overføring",
-    "overfør", "ny lege", "bytte legekontor", "velge lege"
+  "kontekstregler": [
+    {
+      "hvis": [
+        "blodprøve",
+        "time"
+      ],
+      "styrk": "blodprøve_rekvisisjon",
+      "svekk": "timebestilling"
+    },
+    {
+      "hvis": [
+        "barn",
+        "blodprøve"
+      ],
+      "styrk": "blodprøve_barn",
+      "svekk": "blodprøve_rekvisisjon"
+    },
+    {
+      "hvis": [
+        "svar",
+        "blodprøve"
+      ],
+      "styrk": "prøvesvar",
+      "svekk": "blodprøve_rekvisisjon"
+    },
+    {
+      "hvis": [
+        "reise",
+        "vaksine"
+      ],
+      "styrk": "reisevaksine",
+      "svekk": "influensavaksine"
+    },
+    {
+      "hvis": [
+        "influensa",
+        "covid"
+      ],
+      "styrk": "influensavaksine"
+    },
+    {
+      "hvis": [
+        "b12",
+        "injeksjon"
+      ],
+      "styrk": "sting_injeksjon"
+    },
+    {
+      "hvis": [
+        "førerkort",
+        "attest"
+      ],
+      "styrk": "attest"
+    },
+    {
+      "hvis": [
+        "ikke møtt",
+        "avbestill"
+      ],
+      "styrk": "ikke_mott"
+    },
+    {
+      "hvis": [
+        "dobbelttime",
+        "to timer"
+      ],
+      "styrk": "dobbelttime"
+    },
+    {
+      "hvis": [
+        "akutt",
+        "rask",
+        "haster"
+      ],
+      "styrk": "akutt",
+      "svekk": "timebestilling"
+    },
+    {
+      "hvis": [
+        "resept",
+        "forny"
+      ],
+      "styrk": "resept",
+      "svekk": "timebestilling"
+    },
+    {
+      "hvis": [
+        "helse",
+        "melding"
+      ],
+      "styrk": "e_konsultasjon"
+    },
+    {
+      "hvis": [
+        "tolk",
+        "språk"
+      ],
+      "styrk": "tolk"
+    },
+    {
+      "hvis": [
+        "parkering",
+        "bil"
+      ],
+      "styrk": "parkering"
+    },
+    {
+      "hvis": [
+        "telefon",
+        "påminnelse",
+        "sms"
+      ],
+      "styrk": "telefonnummer_sms"
+    },
+    {
+      "hvis": [
+        "e",
+        "konsultasjon"
+      ],
+      "styrk": "e_konsultasjon",
+      "svekk": "timebestilling"
+    }
   ],
-  "svar": "Hvis du er ny pasient, bør du be tidligere legekontor om å sende journalen din til oss. Det gjør at vi raskere får oversikt over historikken din."
-},
-  {
-    "id": "tolk",
-    "nøkkelord": ["tolk", "språk", "oversetter"],
-    "svar": "Dersom du trenger tolk til timen, må du gi beskjed til legekontoret på forhånd via e-kontakt eller telefon, slik at vi kan bestille tolk i tide."
-  },
-  {
-    "id": "prøvesvar",
-    "nøkkelord": ["prøvesvar", "resultat", "blodprøve", "undersøkelse", "når", "ikke", "blodprøvene", "svar", "prøvene"],
-    "svar": "Dersom du venter på svar på blodprøver eller andre undersøkelser, anbefales det å sende en e-kontakt via Helsenorge i stedet for å ringe legekontoret."
-  }
-],
-
-
- "kontekstregler": [
-  {
-    "hvis": ["blodprøve", "time"],
-    "styrk": "blodprøve_rekvisisjon",
-    "svekk": "timebestilling"
-  },
-  {
-    "hvis": ["barn", "blodprøve"],
-    "styrk": "blodprøve_barn",
-    "svekk": "blodprøve_rekvisisjon"
-  },
-  {
-    "hvis": ["svar", "blodprøve"],
-    "styrk": "prøvesvar",
-    "svekk": "blodprøve_rekvisisjon"
-  },
-  {
-    "hvis": ["reise", "vaksine"],
-    "styrk": "reisevaksine",
-    "svekk": "influensavaksine"
-  },
-  {
-    "hvis": ["influensa", "covid"],
-    "styrk": "influensavaksine"
-  },
-  {
-    "hvis": ["b12", "injeksjon"],
-    "styrk": "sting_injeksjon"
-  },
-  {
-    "hvis": ["førerkort", "attest"],
-    "styrk": "attest"
-  },
-  {
-    "hvis": ["ikke møtt", "avbestill"],
-    "styrk": "ikke_mott"
-  },
-  {
-    "hvis": ["dobbelttime", "to timer"],
-    "styrk": "dobbelttime"
-  },
-  {
-    "hvis": ["akutt", "rask", "haster"],
-    "styrk": "akutt",
-    "svekk": "timebestilling"
-  },
-  {
-    "hvis": ["resept", "forny"],
-    "styrk": "resept",
-    "svekk": "timebestilling"
-  },
-  {
-    "hvis": ["helse", "melding"],
-    "styrk": "e_konsultasjon"
-  },
-  {
-    "hvis": ["tolk", "språk"],
-    "styrk": "tolk"
-  },
-  {
-    "hvis": ["parkering", "bil"],
-    "styrk": "parkering"
-  },
-  {
-    "hvis": ["telefon", "påminnelse", "sms"],
-    "styrk": "telefonnummer_sms"
-  },
-   {
-  "hvis": ["e", "konsultasjon"],
-  "styrk": "e_konsultasjon",
-  "svekk": "timebestilling"
+  "kontornavn": "Ågotnes Legekontor",
+  "priser": [
+    "Førerkortattest (alle klasser): 850 kr",
+    "Bekreftelser og korte legeerklæringer (f.eks. skolefravær): 200 kr",
+    "For øvrige attester – se liste på kontoret"
+  ],
+  "leger": [
+    "Lege Thomas Bøe, spesialist i allmennmedisin",
+    "Lege Stig Guntveit, spesialist i allmennmedisin (vikar: Elmer Edward onsdager og fredager)",
+    "Lege Zein Ahmad",
+    "Lege Ane Zakariassen Rong",
+    "Lege Johannes Saxe"
+  ],
+  "labinfo": "SKAL DU KUN TA PRØVER? Gi beskjed i luken for å registrere deg. Laboratoriet har eget køsystem. NB! Fredager må sendeprøver tas før 11:00 (sendes til Haukeland eller Haraldsplass).",
+  "ventetid": "Ågotnes Legekontor er en del av akuttberedskapen i Øygarden kommune. Dette kan i perioder medføre ekstra ventetid. Har du ikke tid å vente? Gi beskjed."
 }
-]
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
