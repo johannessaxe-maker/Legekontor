@@ -1,0 +1,84 @@
+backend:
+  name: github
+  repo: johannessaxe-maker/Legekontor
+  branch: main
+
+media_folder: "Bilder"
+public_folder: "Bilder"
+
+collections:
+  - name: "innstillinger"
+    label: "Innstillinger"
+    files:
+
+      - name: "innhold"
+        label: "Alt innhold"
+        file: "innhold.json"
+        fields:
+
+          - { label: "Kontornavn", name: "kontornavn", widget: "string" }
+          - { label: "Forsidebilde (filnavn)", name: "forsidebilde", widget: "string" }
+
+          - label: "Kontakt oss"
+            name: "Kontakt_oss"
+            widget: "object"
+            fields:
+              - { label: "Resepsjon telefon", name: "Resepsjon", widget: "string" }
+              - { label: "Adresse", name: "Adresse", widget: "string" }
+
+          - label: "Åpningstider"
+            name: "aapningstider"
+            widget: "object"
+            fields:
+              - { label: "Legekontor", name: "legekontor", widget: "string" }
+              - { label: "Telefon", name: "telefon", widget: "string" }
+              - { label: "Laboratorium", name: "laboratorium", widget: "string" }
+
+          - { label: "Info om ventetid", name: "ventetid", widget: "text" }
+
+          - label: "Leger"
+            name: "leger"
+            widget: "list"
+            field: { label: "Lege", name: "lege", widget: "string" }
+
+          - { label: "Info om laboratorium", name: "labinfo", widget: "text" }
+
+          - label: "Priser"
+            name: "priser"
+            widget: "list"
+            field: { label: "Prislinje", name: "prislinje", widget: "string" }
+
+          - label: "Helsenorge-lenker"
+            name: "helsenorge"
+            widget: "list"
+            field: { label: "Tekst (HTML tillatt)", name: "tekst", widget: "string" }
+
+          - label: "Midlertidige meldinger"
+            name: "midlertidige_meldinger"
+            widget: "list"
+            fields:
+              - { label: "Melding", name: "tekst", widget: "text" }
+              - { label: "Vis fra dato", name: "start", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false }
+              - { label: "Vis til dato", name: "slutt", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false }
+
+          - label: "Chatbot-maler (teknisk)"
+            name: "chatbot_maler"
+            widget: "list"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - label: "Nøkkelord"
+                name: "nøkkelord"
+                widget: "list"
+                field: { label: "Ord", name: "ord", widget: "string" }
+              - { label: "Svar", name: "svar", widget: "text" }
+
+          - label: "Kontekstregler (teknisk)"
+            name: "kontekstregler"
+            widget: "list"
+            fields:
+              - label: "Hvis (ord)"
+                name: "hvis"
+                widget: "list"
+                field: { label: "Ord", name: "ord", widget: "string" }
+              - { label: "Styrk ID", name: "styrk", widget: "string" }
+              - { label: "Svekk ID", name: "svekk", widget: "string", required: false }
