@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin – Ågotnes Legekontor</title>
     <script>
-      window.location.replace('https://vermillion-macaron-467121.netlify.app/admin/');
+      if (!window.location.hostname.includes('netlify.app')) {
+        window.location.replace('https://vermillion-macaron-467121.netlify.app/admin/');
+      }
     </script>
   </head>
   <body>
