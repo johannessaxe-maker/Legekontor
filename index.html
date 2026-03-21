@@ -97,6 +97,10 @@ footer {
   )) {
     window.location.replace('/admin/' + window.location.hash);
   }
+
+  if (window.location.pathname.startsWith('/admin')) {
+    window.location.replace('https://vermillion-macaron-467121.netlify.app/admin/');
+  }
 </script>
 <header style="
   position: relative;
