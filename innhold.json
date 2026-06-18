@@ -20,6 +20,11 @@
       "tekst": "Ny lege begynner ved kontoret 1. september.",
       "start": "2026-09-01",
       "slutt": "2026-09-15"
+    },
+    {
+      "tekst": "Sommerferie: \nDr. Thomas Bøe: Uke 27, 28, 30, 31\nDr. Zein: Uke 25, 29, 32\nDr. Johannes Saxe: Uke 28, 29, 31, 33\nDr. Ane Rong: Uke 28, 29, 30\nDr. Antonia Arildsen: Uke 32",
+      "start": "2026-06-18",
+      "slutt": "2026-08-14"
     }
   ],
   "aapningstider": {
