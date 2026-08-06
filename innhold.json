@@ -28,9 +28,9 @@
     }
   ],
   "aapningstider": {
-    "legekontor": "Mandag–fredag: 08:00–15:30. For henting av erklæringer, prøvesvar ol. må gjøres før kl. 15.00",
+    "legekontor": "Mandag–fredag: 08:00–15:30. Lunsj: kl. 12.00 - 12.45. For henting av erklæringer, prøvesvar ol. må gjøres før kl. 15.00",
     "telefon": "Mandag–fredag: 08:30–11:00 og 13:00–14:00. Resepsjon tlf: 56 31 39 90",
-    "laboratorium": "Mandag–torsdag: 08:15–11:00 og 13:00–14:00. Fredag: 08:15–11:00"
+    "laboratorium": "Mandag–torsdag: 08:15–11:00 og 13:00–14:00. Fredag: 08:15–11:00 "
   },
   "helsenorge": [
     "Ny time? Bestill enkelt på <a href=\"https://www.helsenorge.no\" target=\"_blank\" rel=\"noopener\">Helsenorge.no</a>",
